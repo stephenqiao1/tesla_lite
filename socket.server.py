@@ -19,6 +19,9 @@ print('Connected')
 # awaiting for message
 while True:
     data = conn.recv(1024)
-    print(data)
+    
+    # process data
+    clean_data = data.decode().strip()
+    print(clean_data)
     
 conn.close()
