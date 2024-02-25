@@ -1,6 +1,6 @@
 import socket
 
-HOST = 'raspberrypi'
+HOST = '192.168.0.106'
 PORT = 1333
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('Socket created')
