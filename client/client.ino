@@ -55,7 +55,7 @@ void loop() {
     }
   }
 
-  client.println(command);
+  client.print(command);
 
   delay(500);
 }
