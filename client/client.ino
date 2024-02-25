@@ -1,17 +1,19 @@
 #include <WiFi.h>
 #include <Arduino.h>
 
-const int potPin = 26;
+const int potPin = 34;
 
 const char ssid[] = "TP-Link_B922";
 const char password[] = "13600167";
+
+int potValue = 0;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
 
   // Potentiometer
-  analogReadResolution(12);
+  // analogReadResolution(12);
   pinMode(potPin, INPUT);
 
   // TCP Connection Setup
@@ -30,11 +32,11 @@ const int port = 1333;
 char command[1];
 
 void loop() {
-  int potValue = analogRead(potPin);
-  Serial.print(potValue);
+  potValue = analogRead(potPin);
+  Serial.println(potValue);
 
   // Convert output value to command
-  if (potValue < 2048) { 
+  if (potValue > 2048) { 
     command[0] = 'L'; // Turn left
   } else {
     command[0] = 'R'; // Turn right
@@ -55,5 +57,5 @@ void loop() {
 
   client.println(command);
 
-  delay(1000);
+  delay(500);
 }
